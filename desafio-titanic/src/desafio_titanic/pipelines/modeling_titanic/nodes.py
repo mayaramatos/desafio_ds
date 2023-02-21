@@ -6,7 +6,7 @@ generated using Kedro 0.18.4
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import OneHotEncoder
-import xgboost as xgb
+from sklearn.ensemble import RandomForestClassifier 
 
 
 def fill_null(train, test):
@@ -15,7 +15,7 @@ def fill_null(train, test):
     train = train.dropna(subset=['Embarked'])
 
     test['Age'] = test['Age'].fillna(test.groupby(['Sex', 'Pclass', 'Embarked'])['Age'].transform('mean'))
-    test = test.dropna(subset= ['Embarked'])
+    test = test.dropna(subset= ['Embarked', 'Fare'])
 
     train_1 = train
     test_1 = test
@@ -109,12 +109,12 @@ def predict(train_fixed, test_fixed, test_PassengerId):
     X = train_fixed.iloc[:,1:]
     y = train_fixed.iloc[:,0]
 
-    model_xgb = xgb.XGBClassifier()
-    model_xgb.fit(X,y)
+    model = RandomForestClassifier(n_estimators=100)
+    model.fit(X,y)
 
-    y_pred = model_xgb.predict(test_fixed)
+    y_pred = model.predict(test_fixed)
 
     test_survived = pd.Series(y_pred, name = "Survived").astype(int)
-    results = pd.concat([test_PassengerId, test_survived],axis = 1)
+    results = pd.concat([test_PassengerId, test_survived],axis = 1).astype('Int64')
     
     return results
