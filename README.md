@@ -1,7 +1,7 @@
 <h1 align="center"> <b> Titanic ML  </h1>
 
 <p align="center">
-  <img src="/home/mayara/desafio_ds/desafio-titanic/data/01_raw/titanic.jpeg" /  heigth = "500" width = "500">
+  <img src="desafio-titanic\data\01_raw\titanic.jpeg" /  heigth = "500" width = "500">
   
 </br>
 
