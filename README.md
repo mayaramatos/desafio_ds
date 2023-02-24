@@ -14,6 +14,10 @@ Para mais informações sobre o kedro recomenda-se a leitura de sua documentaç�
 
 [Kedro documentation](https://kedro.readthedocs.io)
 
+Os dados utilizados no modelos estão disponíveis no link abaixo:
+
+[Kaggle](https://www.kaggle.com/competitions/titanic/data)
+
 </br>
 
 # 📁 Acesso ao projeto
